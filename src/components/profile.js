@@ -25,6 +25,7 @@ const PageProfile = () => {
   });
   const handleGetProfile = async idUser => {
     await getProfile(idUser).then(response => {
+      setIsLoading(true);
       if (response.status === 200) {
         setIsLoading(false);
         const {
@@ -57,6 +58,7 @@ const PageProfile = () => {
           website
         });
       } else {
+        setIsLoading(false);
         if (localStorage.UserInfo) {
           const { email, name, avatar } = JSON.parse(localStorage.UserInfo);
           setUserProfile({
@@ -136,7 +138,7 @@ const PageProfile = () => {
                           accept="image/jpg, image/jpeg, image/png"
                         /> */}
                       </div>
-                      <ul className="meta list list-unstyled">
+                      <ul className="meta list-unstyled">
                         <li className="name">
                           <label className="d-block">
                             {userProfile && userProfile.name}

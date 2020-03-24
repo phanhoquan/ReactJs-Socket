@@ -4,6 +4,7 @@ import Login from "../components/Login";
 import HomePage from "../components/index";
 import PageProfile from "../components/profile";
 import FormAddPost from "../components/FormAddPost";
+import Post from "../components/Post";
 import PrivateRoute from "../root/privateRoute";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
@@ -12,6 +13,7 @@ function RouteApp() {
     <BrowserRouter>
       <main>
         <Switch>
+          <PrivateRoute exact path={"/post"} component={Post} />
           <PrivateRoute exact path={"/"} component={HomePage} />
           <PrivateRoute exact path={"/profile"} component={PageProfile} />
           <PrivateRoute exact path={"/add-post"} component={FormAddPost} />

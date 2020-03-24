@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import { registerPostFrom } from "../service/services";
-// import { Link } from "react-router-dom";
 import Header from "./Layout/Header";
 import { validator } from "../validate";
 
-const FormAddPost = () => {
+type Props = {
+  history: {
+    push: Function
+  }
+};
+
+const FormAddPost = ({ history }: Props) => {
+  // console.log(history.push("/"), "history");
   const [dataBody, setDataBody] = useState({
     name: "",
     image: "",
@@ -48,11 +54,9 @@ const FormAddPost = () => {
       setErrorMess(validation);
       return;
     }
-    console.log("Sssssssssss");
     try {
       await registerPostFrom(objSubmit)
         .then(response => {
-          console.log("Sssssssssss");
           setIsLoading(true);
           if (response.status === 200) {
             setIsLoading(false);
@@ -67,11 +71,12 @@ const FormAddPost = () => {
               image: "",
               name: ""
             });
+            history.push("/post");
           } else {
             setStatusRegisterPost({
               ...statusRegisterPost,
               status: false,
-              mes: "Register Fail"
+              mes: "Add Post Fail"
             });
             setIsLoading(false);
           }

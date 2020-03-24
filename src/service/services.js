@@ -42,3 +42,8 @@ export function registerPostFrom(body) {
       return profile;
     });
 }
+export function getPost() {
+  return httpService.get(`http://192.168.1.56:5000/api/posts`).then(post => {
+    return post;
+  });
+}

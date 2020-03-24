@@ -50,8 +50,8 @@ const Header = () => {
           <div className="collapse navbar-collapse " id="navbarResponsive">
             <ul className="navbar-nav text-uppercase ml-auto align-items-center d-flex">
               <li className="nav-item">
-                <Link className="nav-link js-scroll-trigger" to="#services">
-                  Services
+                <Link className="nav-link js-scroll-trigger" to="/post">
+                  Post
                 </Link>
               </li>
               <li className="nav-item">
